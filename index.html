@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的學習歷程檔案 | Cyber Portfolio</title>
+    <style>
+        /* CSS 樣式設定 */
+        :root {
+            --bg-color: #05060a;
+            --accent-color: #00f2ff;
+            --secondary-color: #bc13fe;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 科技感背景裝飾 */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(188, 19, 254, 0.05) 0%, transparent 40%);
+            z-index: -2;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: 0.1s ease-out;
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        /* 導覽列 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(5, 6, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            opacity: 0.7;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        /* 主標題區 */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #00f2ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
+        }
+
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* 內容卡片 */
+        main {
+            padding-bottom: 100px;
+        }
+
+        .card {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 6px 15px;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        /* 響應式設定 */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* 手機端簡化 */
+            .card { width: 90%; padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="cursor-follower" id="follower"></div>
+
+    <nav>
+        <div class="logo">LEARNING LOG</div>
+        <ul>
+            <li><a href="#micro">顯微科技</a></li>
+            <li><a href="#canada">留學團</a></li>
+            <li><a href="#drama">英文話劇</a></li>
+            <li><a href="#chem">生活化學</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>個人學習歷程檔案</h1>
+        <p>探索科學、語言與創作的邊界</p>
+    </header>
+
+    <main>
+        <section id="micro" class="card">
+            <h2> 顯微科技</h2>
+            <p>
+                在實驗室中，我利用精密顯微鏡深入觀察植物細胞的微觀結構，並進行果蠅雜交實驗。
+                透過觀察性狀表現，我不僅磨練了耐性，更學會了如何從微小的變化中提取關鍵數據。
+            </p>
+            <div class="tag-container">
+                <span class="tag">生物觀察</span>
+                <span class="tag">科學思維</span>
+                <span class="tag">顯微操作</span>
+            </div>
+        </section>
+
+        <section id="canada" class="card">
+            <h2>加拿大留學團</h2>
+            <p>
+                遠赴加拿大進行短期深造，將課堂所學的英文應用於真實生活。
+                透過與當地人的溝通與異國文化的衝擊，我提升了語言的即時反應力，並培養了跨國協作的視野。
+            </p>
+            <div class="tag-container">
+                <span class="tag">英文口說</span>
+                <span class="tag">異國文化</span>
+                <span class="tag">自主成長</span>
+            </div>
+        </section>
+
+        <section id="drama" class="card">
+            <h2> 英文話劇</h2>
+            <p>
+                在舞台背後，我負責劇本的撰寫與舞台道具的設計。
+                從文字到實體的轉換過程中，我學習到了如何統籌資源，並在有限的時間內與團隊共同完成一場精彩的演出。
+            </p>
+            <div class="tag-container">
+                <span class="tag">劇本撰寫</span>
+                <span class="tag">藝術製作</span>
+                <span class="tag">團隊領導</span>
+            </div>
+        </section>
+
+        <section id="chem" class="card">
+            <h2>生活化學</h2>
+            <p>
+                化學不只是課本上的符號，而是生活的藝術。我參與了藍印術製作與植物成分萃取，
+                親手將化學反應轉化為藍色的光影創作，體會到實驗室與日常美學的完美結合。
+            </p>
+            <div class="tag-container">
+                <span class="tag">化學實驗</span>
+                <span class="tag">藍印工藝</span>
+                <span class="tag">實作精神</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 1. 滑鼠跟隨效果
+        const follower = document.getElementById('follower');
+        document.addEventListener('mousemove', (e) => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        });
+
+        // 2. 滾動顯示動畫 (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // 3. 點擊導覽列平滑捲動
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>   
