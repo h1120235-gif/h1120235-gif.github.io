@@ -205,12 +205,12 @@
     <nav>
         <div class="logo">LEARNING LOG</div>
         <ul>
-            <li><a href="#micro">顯微科技</a></li>
-            <li><a href="#canada">留學團</a></li>
-            <li><a href="#drama">英文話劇</a></li>
-            <li><a href="#chem">生活化學</a></li>
-        </ul>
-    </nav>
+            <li><a href="您新分頁的網址" target="_blank" rel="noopener noreferrer">顯微科技</a></li>
+        <li><a href="您的加拿大留學網址.html" target="_blank" rel="noopener noreferrer">留學團</a></li>
+        <li><a href="您的英文話劇網址.html" target="_blank" rel="noopener noreferrer">英文話劇</a></li>
+        <li><a href="您的生活化學網址.html" target="_blank" rel="noopener noreferrer">生活化學</a></li>
+    </ul>
+</nav>
 
     <header>
         <h1>個人學習歷程檔案</h1>
@@ -297,15 +297,31 @@
         });
 
         // 3. 點擊導覽列平滑捲動
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+<script>
+    // 1. 滑鼠跟隨 (保留)
+    const follower = document.getElementById('follower');
+    document.addEventListener('mousemove', (e) => {
+        follower.style.left = e.clientX + 'px';
+        follower.style.top = e.clientY + 'px';
+    });
+
+    // 2. 滾動顯示動畫 (保留)
+    const observerOptions = { threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         });
+    }, observerOptions);
+
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // 3. 原本的「點擊導覽列平滑捲動」已刪除，不需要補上新的，
+    // 這樣瀏覽器就會乖乖執行 HTML 裡的 target="_blank" 打開新視窗了。
+</script>
     </script>
 </body>
 </html>   
