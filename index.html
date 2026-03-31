@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的學習歷程檔案 | Cyber Portfolio</title>
+    <title>我的學習歷程檔案 | 顯微科技整合版</title>
     <style>
-        /* CSS 樣式設定 */
         :root {
-            --bg-color: #05060a;
-            --accent-color: #00f2ff;
-            --secondary-color: #bc13fe;
-            --text-color: #e0e0e0;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #061015;
+            --accent-color: #7ef3f2;
+            --secondary-color: #8b3dff;
+            --text-color: #eef4f5;
+            --muted-text: rgba(255,255,255,0.78);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --teal-panel: #3d7d83;
+            --content-width: min(1240px, 92vw);
         }
 
         * {
@@ -21,127 +24,129 @@
             box-sizing: border-box;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* 科技感背景裝飾 */
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(126, 243, 242, 0.10), transparent 28%),
+                radial-gradient(circle at top right, rgba(139, 61, 255, 0.10), transparent 20%),
+                linear-gradient(180deg, #041018 0%, #07161e 50%, #08131a 100%);
+            color: var(--text-color);
+            font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
         .bg-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(188, 19, 254, 0.05) 0%, transparent 40%);
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(139, 61, 255, 0.07) 0%, transparent 30%);
             z-index: -2;
         }
 
         .cursor-follower {
             position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(126, 243, 242, 0.10) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             transition: 0.1s ease-out;
             z-index: -1;
-            filter: blur(40px);
+            filter: blur(38px);
         }
 
-        /* 導覽列 */
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 10%;
-            background: rgba(5, 6, 10, 0.8);
-            backdrop-filter: blur(15px);
+            padding: 1.1rem 4vw;
+            background: rgba(4, 13, 18, 0.78);
             border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(14px);
             z-index: 1000;
         }
 
         .logo {
-            font-weight: 900;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: 0.16rem;
             color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+            text-shadow: 0 0 12px rgba(126, 243, 242, 0.35);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         nav a {
+            color: rgba(255,255,255,0.84);
             text-decoration: none;
-            color: var(--text-color);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: 0.3s;
-            opacity: 0.7;
+            font-size: 0.92rem;
+            letter-spacing: 0.08rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            transition: 0.25s ease;
         }
 
         nav a:hover {
             color: var(--accent-color);
-            opacity: 1;
+            background: rgba(255,255,255,0.05);
         }
 
-        /* 主標題區 */
         header {
-            height: 80vh;
+            min-height: 72vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 8rem 1.5rem 3rem;
+        }
+
+        .hero-inner {
+            width: var(--content-width);
+            padding: 3rem 1.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+            backdrop-filter: blur(8px);
         }
 
         header h1 {
-            font-size: 4rem;
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #00f2ff, #bc13fe);
+            background: linear-gradient(to right, #c9ffff, #7ef3f2, #cdb4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
         }
 
         header p {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            opacity: 0.6;
+            color: rgba(255,255,255,0.72);
+            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            letter-spacing: 0.08rem;
         }
 
-        /* 內容卡片 */
         main {
-            padding-bottom: 100px;
+            padding: 0 0 5rem;
         }
 
         .card {
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 3rem;
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(36px);
+            transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .card.active {
@@ -149,140 +154,1175 @@
             transform: translateY(0);
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
+        .micro-portfolio {
+            width: var(--content-width);
+            margin: 0 auto 4rem;
+            display: grid;
+            gap: 2rem;
         }
 
-        .card h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .micro-panel {
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .micro-hero {
+            min-height: 72vh;
+            background:
+                linear-gradient(rgba(4, 20, 24, 0.18), rgba(4, 20, 24, 0.28)),
+                url('./micro-cover.png') center/cover no-repeat;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            position: relative;
         }
 
-        .card p {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 2rem;
+        .micro-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.18));
+        }
+
+        .micro-hero-overlay {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #f4f0e7;
+            padding: 2rem;
+        }
+
+        .micro-hero-overlay h2 {
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+        }
+
+        .micro-meta {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: clamp(1rem, 2vw, 1.45rem);
+            letter-spacing: 0.2rem;
+        }
+
+        .micro-summary {
+            padding: 2rem 2rem 2.2rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        }
+
+        .micro-summary h3,
+        .section-title {
+            font-size: clamp(1.5rem, 2.4vw, 2.15rem);
+            margin-bottom: 1rem;
+            color: #d5ffff;
+        }
+
+        .micro-summary p {
+            color: var(--muted-text);
+            font-size: 1.08rem;
         }
 
         .tag-container {
+            margin-top: 1.2rem;
             display: flex;
-            gap: 10px;
             flex-wrap: wrap;
+            gap: 0.65rem;
         }
 
         .tag {
-            padding: 6px 15px;
-            background: rgba(0, 242, 255, 0.1);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            border-radius: 50px;
-            font-size: 0.8rem;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.9rem;
             color: var(--accent-color);
+            background: rgba(126, 243, 242, 0.08);
+            border: 1px solid rgba(126, 243, 242, 0.22);
+            border-radius: 999px;
         }
 
-        /* 響應式設定 */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            nav ul { display: none; } /* 手機端簡化 */
-            .card { width: 90%; padding: 2rem; }
+        .image-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .showcase-image {
+            position: relative;
+            min-height: 360px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .showcase-image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(6,16,21,0.08), rgba(6,16,21,0.22));
+        }
+
+        .showcase-reflection {
+            /* 顯微科技：這裡可換成你的心得主圖 */
+            /* 更換方式：把 micro-reflection.png 換成你的檔名，例如 my-micro-reflection.jpg */
+            background-image: url('./micro-reflection.png');
+        }
+
+        .showcase-difficulty {
+            /* 顯微科技：這裡可換成你的困難與解決圖片 */
+            /* 更換方式：把 micro-difficulty.png 換成你的檔名 */
+            background-image: url('./micro-difficulty.png');
+        }
+
+        .reflection-panel {
+            background: var(--teal-panel);
+            padding: 2.2rem;
+        }
+
+        .reflection-layout {
+            display: grid;
+            grid-template-columns: 300px minmax(0, 1fr) 300px;
+            align-items: center;
+            gap: 1.25rem;
+            min-height: 560px;
+        }
+
+        .reflection-image-wrap {
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+        }
+
+        .reflection-image-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .reflection-left {
+            transform: rotate(-10deg);
+            border: 4px solid var(--secondary-color);
+        }
+
+        .reflection-right {
+            transform: rotate(18deg);
+        }
+
+        .reflection-content {
+            text-align: center;
+            color: #f4f0e7;
+            padding: 1rem 1.2rem;
+        }
+
+        .reflection-content h3 {
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .reflection-content p {
+            font-size: clamp(1.1rem, 2vw, 1.65rem);
+            line-height: 1.9;
+        }
+
+        .difficulty-panel {
+            background: var(--teal-panel);
+            padding: 2.4rem;
+        }
+
+        .difficulty-panel .section-title {
+            color: #f4f0e7;
+            margin-bottom: 1.4rem;
+        }
+
+        .difficulty-table {
+            overflow: hidden;
+            border: 4px solid #ddd8cf;
+            background: #ebe8e0;
+        }
+
+        .difficulty-row {
+            display: grid;
+            grid-template-columns: 1fr 2.3fr;
+            border-bottom: 2px solid #646464;
+        }
+
+        .difficulty-row:last-child {
+            border-bottom: none;
+        }
+
+        .difficulty-row > div {
+            padding: 1.5rem 1.35rem;
+            color: #111;
+            font-size: clamp(1rem, 1.7vw, 1.3rem);
+            line-height: 1.8;
+            border-right: 2px solid #646464;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .difficulty-row > div:last-child {
+            border-right: none;
+        }
+
+        .difficulty-head {
+            background: #4d4d4d;
+        }
+
+        .difficulty-head > div {
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 0.18rem;
+            font-weight: 700;
+        }
+
+
+        .canada-journey {
+            width: var(--content-width);
+            margin: 0 auto 2rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .canada-panel {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 44px rgba(0,0,0,0.22);
+            background:
+                linear-gradient(180deg, rgba(103, 145, 162, 0.22), rgba(61, 125, 131, 0.26)),
+                rgba(255,255,255,0.03);
+        }
+
+        .canada-intro {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 1.4rem;
+            padding: 1.5rem;
+        }
+
+        .canada-cover {
+            min-height: 420px;
+            background:
+                linear-gradient(180deg, rgba(7, 22, 30, 0.15), rgba(7, 22, 30, 0.3)),
+                url('./b29f824c-ed0f-476f-8072-1da3a2c83823.png') center/cover no-repeat;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .canada-cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(8, 19, 26, 0.55) 100%);
+        }
+
+        .canada-cover-text {
+            position: absolute;
+            left: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 1;
+        }
+
+        .canada-cover-text h2 {
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            margin-bottom: 0.6rem;
+            color: #f4fbff;
+        }
+
+        .canada-cover-text p {
+            color: rgba(255,255,255,0.84);
+            font-size: 1.02rem;
+            max-width: 28rem;
+        }
+
+        .canada-story {
+            padding: 1rem 0.2rem 1rem 0.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .canada-story h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            color: #d8f8ff;
+            margin-bottom: 0.9rem;
+        }
+
+        .canada-story p {
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 0.95rem;
+            font-size: 1.03rem;
+        }
+
+        .canada-grid-panel {
+            padding: 1.5rem;
+        }
+
+        .canada-grid-title {
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+            color: #e4fbff;
+            margin-bottom: 1rem;
+        }
+
+        .canada-photo-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            grid-template-rows: 240px 220px;
+            gap: 1rem;
+        }
+
+        .canada-photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            min-height: 220px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .canada-photo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 19, 26, 0.02), rgba(8, 19, 26, 0.42));
+        }
+
+        .canada-photo.large {
+            grid-row: span 2;
+        }
+
+        .canada-photo-label {
+            position: absolute;
+            left: 1rem;
+            bottom: 0.95rem;
+            z-index: 1;
+            color: #fff;
+            font-size: 0.98rem;
+            letter-spacing: 0.03rem;
+            background: rgba(6, 16, 21, 0.38);
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(6px);
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+        }
+
+        .canada-teacher {
+            /* 加拿大：左大圖 Classroom & Teachers */
+            /* 更換方式：把下面檔名換成你自己的照片 */
+            background-image: url('./4d9ff24d-8d04-492f-b2d2-302f62d389b5.png');
+        }
+
+        .canada-campus {
+            /* 加拿大：右上圖 Learning Content */
+            background-image: url('./c8b980a7-6261-4429-9251-a6e10371cbbc.png');
+            background-position: center top;
+        }
+
+        .canada-falls {
+            /* 加拿大：右中圖 Field Experience */
+            background-image: url('./af2769c4-ee26-4fa1-b59b-9be3a30e2be7.jpeg');
+        }
+
+        .canada-river {
+            /* 加拿大：右下圖 Nature Exploration */
+            background-image: url('./1e9af144-efd3-45a3-bf8e-3581e50b6d15.jpeg');
+        }
+
+
+        .chemistry-section {
+            width: var(--content-width);
+            margin: 0 auto 2rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .chem-panel {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 44px rgba(0,0,0,0.22);
+            background: linear-gradient(180deg, rgba(107, 151, 168, 0.16), rgba(61, 125, 131, 0.18)), rgba(255,255,255,0.03);
+        }
+
+        .chem-intro {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 1.4rem;
+            padding: 1.5rem;
+        }
+
+        .chem-cover {
+            min-height: 390px;
+            background:
+                linear-gradient(180deg, rgba(8, 19, 26, 0.08), rgba(8, 19, 26, 0.38)),
+                url('./37ed8889-f1e3-4469-894a-4dd13616d85a.png') center/cover no-repeat;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chem-cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 15%, rgba(7, 22, 30, 0.60) 100%);
+        }
+
+        .chem-cover-text {
+            position: absolute;
+            left: 1.4rem;
+            bottom: 1.4rem;
+            z-index: 1;
+        }
+
+        .chem-cover-text h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 0.5rem;
+            color: #f4fbff;
+        }
+
+        .chem-cover-text p {
+            color: rgba(255,255,255,0.86);
+            max-width: 28rem;
+        }
+
+        .chem-story {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem 0.3rem 1rem 0.6rem;
+        }
+
+        .chem-story h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            color: #d8f8ff;
+            margin-bottom: 0.9rem;
+        }
+
+        .chem-story p {
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 0.95rem;
+            font-size: 1.03rem;
+        }
+
+        .chem-gallery-panel,
+        .chem-video-panel {
+            padding: 1.5rem;
+        }
+
+        .chem-gallery-title,
+        .chem-video-title {
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+            color: #e4fbff;
+            margin-bottom: 1rem;
+        }
+
+        .chem-gallery-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr 1fr;
+            grid-template-rows: 240px 230px;
+            gap: 1rem;
+        }
+
+        .chem-photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            min-height: 220px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+        }
+
+        .chem-photo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 19, 26, 0.02), rgba(8, 19, 26, 0.46));
+        }
+
+        .chem-photo.large {
+            grid-row: span 2;
+        }
+
+        .chem-photo-label {
+            position: absolute;
+            left: 1rem;
+            bottom: 0.95rem;
+            z-index: 1;
+            color: #fff;
+            font-size: 0.98rem;
+            background: rgba(6, 16, 21, 0.38);
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(6px);
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+        }
+
+        .chem-photo-intro {
+            /* 生活化學：主題封面圖，可直接換檔名 */
+            background-image: url('./f226ea23-cec1-4c65-8a95-018307ec23f6.png');
+        }
+
+        .chem-photo-reflection {
+            /* 生活化學：心得圖，可直接換檔名 */
+            background-image: url('./85dfddff-efe7-4d91-8137-682a17c1f98b.png');
+            background-position: center top;
+        }
+
+        .chem-photo-lab {
+            /* 生活化學：實驗操作照，可直接換檔名 */
+            background-image: url('./3FC15AD5-E150-4C64-BA73-AF752D9AE4D3.jpg');
+            background-position: center center;
+        }
+
+        .chem-photo-cover {
+            /* 生活化學：Lab 主視覺圖，可直接換檔名 */
+            background-image: url('./37ed8889-f1e3-4469-894a-4dd13616d85a.png');
+            background-position: center center;
+        }
+
+        .chem-video-shell {
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(6,16,21,0.45);
+            border: 1px dashed rgba(126,243,242,0.35);
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .chem-video-shell iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            min-height: 420px;
+            border: 0;
+            display: block;
+            background: #08131a;
+        }
+
+        .chem-video-placeholder {
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.80);
+            max-width: 38rem;
+        }
+
+        .chem-video-placeholder strong {
+            display: block;
+            color: #d8f8ff;
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .other-sections {
+            width: var(--content-width);
+            margin: 0 auto;
+            display: grid;
+            gap: 1.4rem;
+        }
+
+
+        .drama-section {
+            width: var(--content-width);
+            margin: 0 auto 2rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .drama-panel {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 44px rgba(0,0,0,0.22);
+            background: linear-gradient(180deg, rgba(77, 133, 170, 0.16), rgba(34, 77, 117, 0.18)), rgba(255,255,255,0.03);
+        }
+
+        .drama-intro {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 1.4rem;
+            padding: 1.5rem;
+        }
+
+        .drama-cover {
+            min-height: 390px;
+            background:
+                linear-gradient(180deg, rgba(7, 22, 30, 0.10), rgba(7, 22, 30, 0.42)),
+                url('./76d09786-69bb-457c-84c9-44d53d1b68bb.png') center/cover no-repeat;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drama-cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 12%, rgba(6, 16, 21, 0.62) 100%);
+        }
+
+        .drama-cover-text {
+            position: absolute;
+            left: 1.4rem;
+            bottom: 1.4rem;
+            z-index: 1;
+        }
+
+        .drama-cover-text h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 0.55rem;
+            color: #f6fbff;
+        }
+
+        .drama-cover-text p {
+            color: rgba(255,255,255,0.86);
+            max-width: 28rem;
+        }
+
+        .drama-story {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem 0.3rem 1rem 0.6rem;
+        }
+
+        .drama-story h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            color: #d8f8ff;
+            margin-bottom: 0.9rem;
+        }
+
+        .drama-story p {
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 0.95rem;
+            font-size: 1.03rem;
+        }
+
+        .drama-gallery-panel,
+        .drama-text-panel {
+            padding: 1.5rem;
+        }
+
+        .drama-gallery-title,
+        .drama-text-title {
+            font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+            color: #e4fbff;
+            margin-bottom: 1rem;
+        }
+
+        .drama-gallery-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr 1fr;
+            grid-template-rows: 250px 230px;
+            gap: 1rem;
+        }
+
+        .drama-photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            min-height: 220px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .drama-photo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 19, 26, 0.03), rgba(8, 19, 26, 0.46));
+        }
+
+        .drama-photo.large {
+            grid-row: span 2;
+        }
+
+        .drama-photo-label {
+            position: absolute;
+            left: 1rem;
+            bottom: 0.95rem;
+            z-index: 1;
+            color: #fff;
+            font-size: 0.98rem;
+            letter-spacing: 0.03rem;
+            background: rgba(6, 16, 21, 0.38);
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(6px);
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+        }
+
+        .drama-photo-stage {
+            /* 英文話劇：上台表演圖，可直接換檔名 */
+            background-image: url('./8eca1e1b-ea27-47b8-a7ce-0bcb7a1d1b5e.png');
+            background-position: center top;
+        }
+
+        .drama-photo-craft {
+            /* 英文話劇：道具製作圖，可直接換檔名 */
+            background-image: url('./56d55227-8b81-4793-8b48-ef1fde3060bf.png');
+            background-position: center top;
+        }
+
+        .drama-photo-team {
+            /* 英文話劇：團隊大合照，可直接換檔名 */
+            background-image: url('./S__3973141_0.jpg');
+            background-position: center;
+        }
+
+        .drama-photo-process {
+            /* 英文話劇：Talk Show 主視覺圖，可直接換檔名 */
+            background-image: url('./76d09786-69bb-457c-84c9-44d53d1b68bb.png');
+            background-position: center;
+        }
+
+        .drama-photo-board {
+            /* 英文話劇：道具製作圖，可直接換檔名 */
+            background-image: url('./56d55227-8b81-4793-8b48-ef1fde3060bf.png');
+            background-position: center;
+        }
+
+        .drama-quote {
+            padding: 1.35rem 1.45rem;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.86);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .drama-quote strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.45rem;
+        }
+
+        .simple-card {
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+        }
+
+        .simple-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #d8f8ff;
+        }
+
+        .simple-card p {
+            color: rgba(255,255,255,0.76);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            width: var(--content-width);
+            margin: 0 auto;
+            padding: 1rem 0 3rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.92rem;
+            text-align: center;
+        }
+
+        @media (max-width: 1100px) {
+            .canada-intro,
+            .chem-intro,
+            .drama-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .canada-photo-grid,
+            .chem-gallery-grid,
+            .drama-gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 260px 220px 220px;
+            }
+
+            .canada-photo.large,
+            .chem-photo.large,
+            .drama-photo.large {
+                grid-row: span 1;
+            }
+
+            .reflection-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                min-height: auto;
+            }
+
+            .reflection-left,
+            .reflection-right {
+                transform: none;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            .image-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .canada-photo-grid,
+            .chem-gallery-grid,
+            .drama-gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+            }
+
+            .canada-photo,
+            .canada-photo.large,
+            .chem-photo,
+            .chem-photo.large,
+            .drama-photo,
+            .drama-photo.large {
+                min-height: 220px;
+            }
+
+            nav {
+                padding: 0.95rem 1rem;
+                align-items: flex-start;
+                gap: 0.8rem;
+                flex-direction: column;
+            }
+
+            nav ul {
+                gap: 0.45rem;
+            }
+
+            header {
+                min-height: 62vh;
+                padding-top: 8.5rem;
+            }
+
+            .micro-summary,
+            .reflection-panel,
+            .difficulty-panel,
+            .simple-card,
+            .drama-gallery-panel,
+            .drama-text-panel,
+            .chem-gallery-panel,
+            .chem-video-panel {
+                padding: 1.25rem;
+            }
+
+            .chem-video-shell iframe {
+                min-height: 260px;
+            }
+
+            .difficulty-row {
+                grid-template-columns: 1fr;
+            }
+
+            .difficulty-row > div {
+                border-right: none;
+                border-bottom: 1px solid #8c8c8c;
+                padding: 1rem;
+            }
+
+            .difficulty-row > div:last-child {
+                border-bottom: none;
+            }
+
+            .showcase-image {
+                min-height: 250px;
+            }
+
+            .cursor-follower {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="bg-glow"></div>
     <div class="cursor-follower" id="follower"></div>
 
     <nav>
         <div class="logo">LEARNING LOG</div>
         <ul>
-            <li><a href="您新分頁的網址" target="_blank" rel="noopener noreferrer">顯微科技</a></li>
-        <li><a href="您的加拿大留學網址.html" target="_blank" rel="noopener noreferrer">留學團</a></li>
-        <li><a href="您的英文話劇網址.html" target="_blank" rel="noopener noreferrer">英文話劇</a></li>
-        <li><a href="您的生活化學網址.html" target="_blank" rel="noopener noreferrer">生活化學</a></li>
-    </ul>
-</nav>
+            <li><a href="#micro">顯微科技</a></li>
+            <li><a href="#canada">加拿大學習之旅</a></li>
+            <li><a href="#drama">英文話劇</a></li>
+            <li><a href="#chem">生活化學</a></li>
+        </ul>
+    </nav>
 
     <header>
-        <h1>個人學習歷程檔案</h1>
-        <p>探索科學、語言與創作的邊界</p>
+        <div class="hero-inner card">
+            <h1>個人學習歷程檔案</h1>
+            <p>先完成一個可展示版本，再逐步加入更多照片、影片、心得與細節。</p>
+        </div>
     </header>
 
     <main>
-        <section id="micro" class="card">
-            <h2> 顯微科技</h2>
-            <p>
-                在實驗室中，我利用精密顯微鏡深入觀察植物細胞的微觀結構，並進行果蠅雜交實驗。
-                透過觀察性狀表現，我不僅磨練了耐性，更學會了如何從微小的變化中提取關鍵數據。
-            </p>
-            <div class="tag-container">
-                <span class="tag">生物觀察</span>
-                <span class="tag">科學思維</span>
-                <span class="tag">顯微操作</span>
+        <!-- ===== 圖片更換說明 =====
+1. 所有圖片都放在和這個 HTML 同一層，或放在 images/ 資料夾後同步修改路徑。
+2. 你只要找到 background-image:url('你的檔名') 或 <img src="你的檔名"> 的地方，把檔名改掉即可。
+3. 建議檔名使用英文，例如 canada-classroom.jpg、chem-lab.jpg。
+================================ -->
+
+            <section id="micro" class="micro-portfolio card">
+            <div class="micro-panel micro-hero">
+                <div class="micro-hero-overlay">
+                    <h2>顯微科技</h2>
+                    <div class="micro-meta">
+                        <span>二丁</span>
+                        <span>39</span>
+                        <span>陳威宏</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="micro-panel micro-summary">
+                <h3>主題簡介</h3>
+                <p>
+                    顯微科技是微觀下的實踐。在屏息運刀間，體會從失敗到逐步優化的過程價值；當親手切下的薄片在鏡下展現生命質感，課本知識即轉化為真實感官經驗。這份「親眼見證」讓學習不再是死記，而是透過雙手與視野的磨練，建構出深刻的實踐力量與見證。
+                </p>
+                <div class="tag-container">
+                    <span class="tag">顯微鏡觀察</span>
+                    <span class="tag">細胞切片</span>
+                    <span class="tag">生物探究</span>
+                    <span class="tag">問題解決</span>
+                </div>
+            </div>
+
+            <div class="image-showcase card">
+                <div class="micro-panel showcase-image showcase-reflection" aria-label="心得版面預覽"></div>
+                <div class="micro-panel showcase-image showcase-difficulty" aria-label="困難與解決版面預覽"></div>
+            </div>
+
+            <div class="micro-panel reflection-panel card">
+                <div class="reflection-layout">
+                    <div class="reflection-image-wrap reflection-left">
+                        <img src="./micro-reflection.png" alt="顯微科技心得頁參考圖">
+                    </div>
+
+                    <div class="reflection-content">
+                        <h3>心得</h3>
+                        <p>
+                            感謝老師讓我拉近與植物和動物細胞的距離，在自己手工製作下，可能會浪費很多的動植物細胞，但是你還是會不斷地給我是錯的機會，因此我學會要耐心且用心地去切動植物的細胞，以及找回我對生物的熱誠。
+                        </p>
+                    </div>
+
+                    <div class="reflection-image-wrap reflection-right">
+                        <img src="./micro-reflection.png" alt="顯微科技實作照片版面參考">
+                    </div>
+                </div>
+            </div>
+
+            <div class="micro-panel difficulty-panel card">
+                <h3 class="section-title">遇到的困難與解決</h3>
+                <div class="difficulty-table">
+                    <div class="difficulty-row difficulty-head">
+                        <div>DIFFICULTY</div>
+                        <div>RESOLUTION</div>
+                    </div>
+                    <div class="difficulty-row">
+                        <div>無法清晰地拍出顯微鏡下的細胞</div>
+                        <div>要有耐心地調整光圈，並且盡量讓自己的手固定不動。</div>
+                    </div>
+                    <div class="difficulty-row">
+                        <div>無法切出薄片，不知不覺地切太厚了</div>
+                        <div>仔細聆聽與觀察老師的切法，如雙刀流的握法，以及不要忘記要把正在切的物體沾水，才會比較好切。</div>
+                    </div>
+                    <div class="difficulty-row">
+                        <div>找不到自己想要的細胞或基因</div>
+                        <div>多切幾個樣本，或是可以上網找尋哪個部位會比較容易照到需要的基因，如指尖比較容易流血，所以也比較容易觀察出紅血球。</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="canada" class="card">
-            <h2>加拿大留學團</h2>
-            <p>
-                遠赴加拿大進行短期深造，將課堂所學的英文應用於真實生活。
-                透過與當地人的溝通與異國文化的衝擊，我提升了語言的即時反應力，並培養了跨國協作的視野。
-            </p>
-            <div class="tag-container">
-                <span class="tag">英文口說</span>
-                <span class="tag">異國文化</span>
-                <span class="tag">自主成長</span>
-            </div>
-        </section>
+        <section class="other-sections">
+            <section id="canada" class="canada-journey card">
+                <div class="canada-panel canada-intro">
+                    <div class="canada-cover">
+                        <div class="canada-cover-text">
+                            <h2>加拿大學習之旅</h2>
+                            <p>把課堂學習、跨文化交流與自然探索整理成同一個主題頁，延續目前網站的冷色科技感與清爽留白。</p>
+                        </div>
+                    </div>
 
-        <section id="drama" class="card">
-            <h2> 英文話劇</h2>
-            <p>
-                在舞台背後，我負責劇本的撰寫與舞台道具的設計。
-                從文字到實體的轉換過程中，我學習到了如何統籌資源，並在有限的時間內與團隊共同完成一場精彩的演出。
-            </p>
-            <div class="tag-container">
-                <span class="tag">劇本撰寫</span>
-                <span class="tag">藝術製作</span>
-                <span class="tag">團隊領導</span>
-            </div>
-        </section>
+                    <div class="canada-story">
+                        <h3>主題簡介</h3>
+                        <p>在加拿大的課堂上，與來自巴西等國家的同學穿梭於各類報告中，我們在跨文化的交會裡，學會了如何精準交換想法並達成共識。這段旅程讓我深刻體會到異國教育體系的運作邏輯，進而開始重新審視過往的學習慣性，思考最適合自己的成長環境。</p>
+                        <p>透過與不同背景的人共事，我學著站在對方的角度思考，在多元與包容中，將這些細微的觀察轉化為對自我的深度探問與蛻變。</p>
+                        <div class="tag-container">
+                            <span class="tag">課堂互動</span>
+                            <span class="tag">國際交流</span>
+                            <span class="tag">英文應用</span>
+                            <span class="tag">海外視野</span>
+                        </div>
+                    </div>
+                </div>
 
-        <section id="chem" class="card">
-            <h2>生活化學</h2>
-            <p>
-                化學不只是課本上的符號，而是生活的藝術。我參與了藍印術製作與植物成分萃取，
-                親手將化學反應轉化為藍色的光影創作，體會到實驗室與日常美學的完美結合。
-            </p>
-            <div class="tag-container">
-                <span class="tag">化學實驗</span>
-                <span class="tag">藍印工藝</span>
-                <span class="tag">實作精神</span>
-            </div>
+                <div class="canada-panel canada-grid-panel">
+                    <h3 class="canada-grid-title">照片格子｜上課、交流與實地體驗</h3>
+                    <div class="canada-photo-grid">
+                        <div class="canada-photo canada-teacher large">
+                            <span class="canada-photo-label">Classroom & Teachers</span>
+                        </div>
+                        <div class="canada-photo canada-campus">
+                            <span class="canada-photo-label">Learning Content</span>
+                        </div>
+                        <div class="canada-photo canada-falls">
+                            <span class="canada-photo-label">Field Experience</span>
+                        </div>
+                        <div class="canada-photo canada-river">
+                            <span class="canada-photo-label">Nature Exploration</span>
+                        </div>
+                        <!-- 加拿大：額外照片格子，可直接換這裡的檔名 -->
+                        <!-- 例如改成 background-image:url('./my-canada-photo.jpg'); -->
+                        <div class="canada-photo" style="background-image:url('./b29f824c-ed0f-476f-8072-1da3a2c83823.png');">
+                            <span class="canada-photo-label">Canada Highlights</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="drama" class="drama-section card">
+                <div class="drama-panel drama-intro">
+                    <div class="drama-cover">
+                        <div class="drama-cover-text">
+                            <h2>英文話劇</h2>
+                            <p>把編劇、道具製作、排練與上台演出整理成一個完整主題區，呈現英語表達與團隊合作的歷程。</p>
+                        </div>
+                    </div>
+
+                    <div class="drama-story">
+                        <h3>活動內容</h3>
+                        <p>英文話劇活動內容，學生為編劇人員，並參與製作道具組，以及音效組。這場活動不只是完成一次演出，而是把劇本、排練、舞台節奏與團隊合作串成一段完整的學習歷程。</p>
+                        <p>從構思劇情、調整橋段，到協助演員理解角色與情緒，我逐步把原本零散的想法整理成能在舞台上被真正感受到的作品，也更深刻體會到溝通、協調與共創的重要性。</p>
+                        <div class="tag-container">
+                            <span class="tag">編劇創作</span>
+                            <span class="tag">道具製作</span>
+                            <span class="tag">音效設計</span>
+                            <span class="tag">團隊默契</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drama-panel drama-gallery-panel">
+                    <h3 class="drama-gallery-title">照片展示｜製作、排練與團隊成果</h3>
+                    <div class="drama-gallery-grid">
+                        <div class="drama-photo drama-photo-team large">
+                            <span class="drama-photo-label">Cast & Crew</span>
+                        </div>
+                        <div class="drama-photo drama-photo-craft">
+                            <span class="drama-photo-label">Props Making</span>
+                        </div>
+                        <div class="drama-photo drama-photo-stage">
+                            <span class="drama-photo-label">On Stage</span>
+                        </div>
+                        <div class="drama-photo drama-photo-process">
+                            <span class="drama-photo-label">Talk Show Theme</span>
+                        </div>
+                        <div class="drama-photo drama-photo-board">
+                            <span class="drama-photo-label">Production Process</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drama-panel drama-text-panel">
+                    <h3 class="drama-text-title">反思與成長</h3>
+                    <div class="drama-quote">
+                        <strong>學習紀錄</strong>
+                        『英文話劇活動內容，學生為編劇人員，並參與製作道具組，以及音效組。在這場英語話劇的排練場上，我不只是在編劇本，而是在學習如何並肩作戰。透過引導演員表現與彼此間的深度共鳴，我們賦予了角色靈魂，也建立了難能可貴的默契。我的劇本打破常規的構思，並在無數次的對話與傾聽中，將原本零散的點子淬煉成舞台上的動人瞬間。這不只是一次演出，更是我們共同創造、彼此成就的成長軌跡。』
+                    </div>
+                </div>
+            </section>
+
+            <section id="chem" class="chemistry-section card">
+                <div class="chem-panel chem-intro">
+                    <div class="chem-cover">
+                        <div class="chem-cover-text">
+                            <h2>生活化學</h2>
+                            <p>把化學課堂中的實驗、操作紀錄、心得整理成照片與影片並行的展示區，延續前面主題的冷色與乾淨留白。</p>
+                        </div>
+                    </div>
+
+                    <div class="chem-story">
+                        <h3>主題簡介</h3>
+                        <p>在生活化學的實驗室裡，我與組員穿梭於色層分析的色彩推移與藍印術的顯影過程。我們在一次次的實驗中磨練穩定度，並在蒸餾實驗中學會耐心等待時驗結果。</p>
+                        <p>當成果不如預期時，我們不急於挫敗，而是透過數據的比對與邏輯推演，冷靜找出關鍵變因，並帶領小組在反覆驗證中尋求突破。這段過程讓我體會到，親手做實驗的魅力不僅在於成功的瞬間，更在於面對未知時那份追根究底的韌性。</p>
+                        <div class="tag-container">
+                            <span class="tag">化學實驗</span>
+                            <span class="tag">實作操作</span>
+                            <span class="tag">學習反思</span>
+                            <span class="tag">影片紀錄</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chem-panel chem-gallery-panel">
+                    <h3 class="chem-gallery-title">照片展示｜封面、心得、實驗操作</h3>
+                    <div class="chem-gallery-grid">
+                        <div class="chem-photo chem-photo-lab large">
+                            <span class="chem-photo-label">Laboratory Practice</span>
+                        </div>
+                        <div class="chem-photo chem-photo-intro">
+                            <span class="chem-photo-label">Topic Cover</span>
+                        </div>
+                        <div class="chem-photo chem-photo-cover">
+                            <span class="chem-photo-label">Chemistry Theme</span>
+                        </div>
+                        <div class="chem-photo chem-photo-reflection">
+                            <span class="chem-photo-label">Reflection</span>
+                        </div>
+                        <!-- 生活化學：額外照片格子，可直接換這裡的檔名 -->
+                        <div class="chem-photo" style="background-image:url('./3FC15AD5-E150-4C64-BA73-AF752D9AE4D3.jpg'); background-position:center top;">
+                            <span class="chem-photo-label">Experiment Record</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chem-panel chem-video-panel">
+                    <h3 class="chem-video-title">影片展示｜YouTube 區域預留</h3>
+                    <div class="chem-video-shell">
+                        <iframe
+                            src="https://www.youtube.com/embed/VIDEO_ID" <!-- 生活化學影片：把 VIDEO_ID 換成你的 YouTube 影片代碼 -->
+                            title="生活化學 YouTube 影片"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="chem-video-placeholder">
+                        <strong>使用方式</strong>
+                        把上面 iframe 的 <code>VIDEO_ID</code> 換成你的 YouTube 影片代碼即可。
+                        例如影片網址如果是 <code>youtube.com/watch?v=abc123XYZ</code>，就把 <code>VIDEO_ID</code> 改成 <code>abc123XYZ</code>。
+                    </div>
+                </div>
+            </section>
         </section>
     </main>
 
+    <footer>
+        這是第一版可執行整合頁，後續可再替換圖片、拆分左右照片、補影片與心得細節。
+    </footer>
+
     <script>
-        // 1. 滑鼠跟隨效果
         const follower = document.getElementById('follower');
         document.addEventListener('mousemove', (e) => {
+            if (!follower) return;
             follower.style.left = e.clientX + 'px';
             follower.style.top = e.clientY + 'px';
         });
-
-        // 2. 滾動顯示動畫 (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.15
-        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -290,38 +1330,9 @@
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.12 });
 
-        document.querySelectorAll('.card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // 3. 點擊導覽列平滑捲動
-<script>
-    // 1. 滑鼠跟隨 (保留)
-    const follower = document.getElementById('follower');
-    document.addEventListener('mousemove', (e) => {
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-    });
-
-    // 2. 滾動顯示動畫 (保留)
-    const observerOptions = { threshold: 0.15 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-    });
-
-    // 3. 原本的「點擊導覽列平滑捲動」已刪除，不需要補上新的，
-    // 這樣瀏覽器就會乖乖執行 HTML 裡的 target="_blank" 打開新視窗了。
-</script>
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
     </script>
 </body>
-</html>   
+</html>
