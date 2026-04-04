@@ -263,11 +263,41 @@
             position: relative;
         }
 
+        .micro-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(85, 190, 255, 0.08) 0px,
+                rgba(85, 190, 255, 0.08) 2px,
+                transparent 2px,
+                transparent 18px
+            );
+            opacity: 0.38;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .micro-hero::after {
             content: "";
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.18));
+        }
+
+        .micro-hero-kicker {
+            display: inline-block;
+            padding: 0.45rem 1rem;
+            margin-bottom: 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(126, 243, 242, 0.22);
+            background: rgba(4, 20, 28, 0.52);
+            color: var(--accent-color);
+            font-size: 0.88rem;
+            letter-spacing: 0.16rem;
+            backdrop-filter: blur(6px);
         }
 
         .micro-hero-overlay {
@@ -281,8 +311,9 @@
         .micro-hero-overlay h2 {
             font-size: clamp(2.6rem, 6vw, 5rem);
             margin-bottom: 1.2rem;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+            font-weight: 900;
+            color: #f4f8fa;
+            text-shadow: 0 0 32px rgba(126,243,242,0.45), 0 4px 18px rgba(0,0,0,0.3);
         }
 
         .micro-meta {
@@ -297,6 +328,7 @@
         .micro-summary {
             padding: 2rem 2rem 2.2rem;
             background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            border-left: 3px solid rgba(126,243,242,0.45);
         }
 
         .micro-summary h3,
@@ -410,12 +442,32 @@
             line-height: 1.9;
         }
 
-        .difficulty-panel {
+        .micro-experience-panel {
             background: var(--teal-panel);
-            padding: 2.4rem;
+            padding: 2.8rem 2.4rem;
+        }
+
+        .micro-experience-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            color: #f4f0e7;
+        }
+
+        .micro-experience-inner h3 {
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .micro-experience-inner p {
+            font-size: clamp(1.1rem, 2vw, 1.65rem);
+            line-height: 1.9;
         }
 
         .difficulty-panel {
+            background: var(--teal-panel);
+            padding: 2.4rem;
             position: relative;
             overflow: hidden;
         }
@@ -507,14 +559,15 @@
 
         .difficulty-table {
             overflow: hidden;
-            border: 4px solid #ddd8cf;
-            background: #ebe8e0;
+            border: 1px solid rgba(126,243,242,0.22);
+            background: rgba(4,18,24,0.92);
+            border-radius: 12px;
         }
 
         .difficulty-row {
             display: grid;
             grid-template-columns: 1fr 2.3fr;
-            border-bottom: 2px solid #646464;
+            border-bottom: 1px solid rgba(126,243,242,0.15);
         }
 
         .difficulty-row:last-child {
@@ -523,10 +576,10 @@
 
         .difficulty-row > div {
             padding: 1.5rem 1.35rem;
-            color: #111;
+            color: rgba(232,244,245,0.88);
             font-size: clamp(1rem, 1.7vw, 1.3rem);
             line-height: 1.8;
-            border-right: 2px solid #646464;
+            border-right: 1px solid rgba(126,243,242,0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -538,14 +591,16 @@
         }
 
         .difficulty-head {
-            background: #4d4d4d;
+            background: linear-gradient(90deg, rgba(21,80,96,0.95), rgba(15,55,75,0.95));
+            border-bottom: 1px solid rgba(126,243,242,0.35);
         }
 
         .difficulty-head > div {
             color: #fff;
             font-size: 1rem;
-            letter-spacing: 0.18rem;
+            letter-spacing: 0.22rem;
             font-weight: 700;
+            text-shadow: 0 0 12px rgba(126,243,242,0.4);
         }
 
 
@@ -630,6 +685,46 @@
 
         .canada-grid-panel {
             padding: 1.5rem;
+        }
+
+        .canada-reflection-panel {
+            padding: 2.8rem 2.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canada-reflection-panel::before {
+            content: "\201C";
+            position: absolute;
+            top: -0.5rem;
+            left: 1.5rem;
+            font-size: 9rem;
+            line-height: 1;
+            color: rgba(126, 243, 242, 0.12);
+            font-family: Georgia, serif;
+            pointer-events: none;
+        }
+
+        .canada-reflection-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .canada-reflection-inner h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            color: #d8f8ff;
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            border-left: 3px solid rgba(126, 243, 242, 0.5);
+        }
+
+        .canada-reflection-inner p {
+            color: rgba(255,255,255,0.82);
+            font-size: clamp(1rem, 1.7vw, 1.15rem);
+            line-height: 2;
+            padding-left: 1rem;
         }
 
         .canada-grid-title {
@@ -1072,6 +1167,58 @@
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
+        .drama-conflict-panel {
+            padding: 2.8rem 2.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drama-conflict-panel::before {
+            content: "\201C";
+            position: absolute;
+            top: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9rem;
+            line-height: 1;
+            color: rgba(126, 243, 242, 0.07);
+            font-family: Georgia, serif;
+            pointer-events: none;
+        }
+
+        .drama-conflict-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .drama-conflict-inner h3 {
+            font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+            color: #e4fbff;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .drama-conflict-inner h3::after {
+            content: "";
+            display: block;
+            width: 3rem;
+            height: 2px;
+            background: rgba(126, 243, 242, 0.5);
+            margin: 0.55rem auto 0.9rem;
+            border-radius: 999px;
+        }
+
+        .drama-conflict-inner p {
+            color: rgba(255,255,255,0.82);
+            font-size: clamp(1rem, 1.7vw, 1.15rem);
+            line-height: 2;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
         .drama-quote strong {
             color: #ffffff;
             display: block;
@@ -1403,9 +1550,13 @@
             <section id="micro" class="micro-portfolio card">
             <div class="micro-panel micro-hero">
                 <div class="micro-hero-overlay">
+                    <div class="micro-hero-kicker">MICROSCOPY · SCIENCE · TECHNOLOGY</div>
                     <h2>顯微科技</h2>
                     <div class="micro-meta">
-                                            </div>
+                        <span>生物學</span>
+                        <span>微觀觀察</span>
+                        <span>實驗操作</span>
+                    </div>
                 </div>
             </div>
 
@@ -1444,6 +1595,13 @@
                 </div>
             </div>
 
+            <div class="micro-panel micro-experience-panel card">
+                <div class="micro-experience-inner">
+                    <h3>經驗分享</h3>
+                    <p>對顯微技術的熱枕，驅使我們對作品採取最高標準。我們研習「雙刀流法」與「折撕法」，即便初期受限於經驗，必須利用中午額外趕工，我們也從未退縮。「我們會互相幫助，例如在做紅血球的樣本時，我自己一直不敢用力拿針戳自己的手指，所以他就在我的同意下，幫我把針刺進手指中，讓血液可以流出來，還會一起討論下次如何切的更好，例如我們討論出每次切片前，刀片都一定要先沾水，才能在切植物時更穩定，更會互相分享經驗，例如他告訴我手指末端比較容易刺出血」。這段歷程讓我們不僅贏得老師認可，更成功產出高品質的樣本，親手解開生命密碼的成就感，極大地提升了我的學習熱情。</p>
+                </div>
+            </div>
+
             <div class="micro-panel difficulty-panel card">
                 <div class="micro-tech-decor" aria-hidden="true">
                     <span class="ring"></span>
@@ -1469,6 +1627,16 @@
                         <div>找不到自己想要的細胞或基因</div>
                         <div>多切幾個樣本，或是可以上網找尋哪個部位會比較容易照到需要的基因，如指尖比較容易流血，所以也比較容易觀察出紅血球。</div>
                     </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="micro-panel micro-experience-panel card">
+                <div class="micro-experience-inner">
+                    <h3>心得</h3>
+                    <p>熱忱讓我們不畏艱辛，即便犧牲中午時間也要磨練切片技術。難忘夥伴在採血時的義氣相挺，以及我們一起討論沾水切片、分享實驗細節的時光。當親手製作的植物與果蠅樣本呈現在顯微鏡下，老師的讚許與內心的滿足，化作我持續探索生物領域的最強動力。</p>
                 </div>
             </div>
 
@@ -1512,6 +1680,15 @@
                     </div>
                 </div>
 
+
+                
+                <div class="drama-panel drama-conflict-panel">
+                    <div class="drama-conflict-inner">
+                        <h3>心得與反思</h3>
+                        <p>為期三週的加拿大學習之旅，讓我深入了解加拿大與台灣教育體系的差異。在與巴西學友的互動中，我對其「積極溝通」的態度印象深刻；即便外語能力有限，他們仍勇於針對環保議題與國際文化交流發表見解，這促使我反思自身收斂的學習慣性。在球場與餐桌間，我體會到他們熱情陽光的性格背後，其實承載著優異成績與家庭支持的重任。這段對談不僅拓寬了我的國際視野，更讓我意識到能在加拿大並肩學習，是一段多麼彌足珍貴的機緣。</p>
+                    </div>
+                </div>
+
                 <div class="canada-panel canada-grid-panel">
                     <h3 class="canada-grid-title">照片格子｜上課、交流與實地體驗</h3>
                     <div class="canada-photo-grid">
@@ -1534,6 +1711,7 @@
                         </div>
                     </div>
                 </div>
+
             </section>
 
             <section id="drama" class="drama-section card">
@@ -1559,6 +1737,30 @@
                     </div>
                 </div>
 
+                <div class="drama-panel drama-conflict-panel">
+                    <div class="drama-conflict-inner">
+                        <h3>分歧</h3>
+                        <p>我的某位同學英文極佳且充滿自信，一心渴望爭取男主角或重要配角。然而，當投票結果不如預期，演技未獲多數認可時，他因強烈的失落感而萌生去道具組「擺爛」的念頭。所幸經過溝通，我們傳達了「觀眾更在乎整體創意與震撼，而非單人戲份」的觀點，並承諾給予更多想法表達的空間。他逐漸放下對名份的執著，將才華轉向幕後。最終，在他的帶領下，道具組奪得最佳道具獎，展現了「不在其位，亦能發光」的價值。</p>
+                    </div>
+                </div>
+
+                <div class="drama-panel drama-conflict-panel">
+                    <div class="drama-conflict-inner">
+                        <h3>反思與成長</h3>
+                        <strong>學習紀錄</strong>
+                        <p>『英文話劇活動內容，學生為編劇人員，並參與製作道具組，以及音效組。在這場英語話劇的排練場上，我不只是在編劇本，而是在學習如何並肩作戰。透過引導演員表現與彼此間的深度共鳴，我們賦予了角色靈魂，也建立了難能可貴的默契。我的劇本打破常規的構思，並在無數次的對話與傾聽中，將原本零散的點子淬煉成舞台上的動人瞬間。這不只是一次演出，更是我們共同創造、彼此成就的成長軌跡。』</p>
+                    </div>
+                </div>
+<!--
+                <div class="drama-panel drama-text-panel">
+                    <h3 class="drama-text-title">反思與成長</h3>
+                    <div class="drama-quote">
+                        <strong>學習紀錄</strong>
+                        『英文話劇活動內容，學生為編劇人員，並參與製作道具組，以及音效組。在這場英語話劇的排練場上，我不只是在編劇本，而是在學習如何並肩作戰。透過引導演員表現與彼此間的深度共鳴，我們賦予了角色靈魂，也建立了難能可貴的默契。我的劇本打破常規的構思，並在無數次的對話與傾聽中，將原本零散的點子淬煉成舞台上的動人瞬間。這不只是一次演出，更是我們共同創造、彼此成就的成長軌跡。』
+                    </div>
+                </div>-->
+
+
                 <div class="drama-panel drama-gallery-panel">
                     <h3 class="drama-gallery-title">照片展示｜製作、排練與團隊成果</h3>
                     <div class="drama-gallery-grid">
@@ -1580,13 +1782,7 @@
                     </div>
                 </div>
 
-                <div class="drama-panel drama-text-panel">
-                    <h3 class="drama-text-title">反思與成長</h3>
-                    <div class="drama-quote">
-                        <strong>學習紀錄</strong>
-                        『英文話劇活動內容，學生為編劇人員，並參與製作道具組，以及音效組。在這場英語話劇的排練場上，我不只是在編劇本，而是在學習如何並肩作戰。透過引導演員表現與彼此間的深度共鳴，我們賦予了角色靈魂，也建立了難能可貴的默契。我的劇本打破常規的構思，並在無數次的對話與傾聽中，將原本零散的點子淬煉成舞台上的動人瞬間。這不只是一次演出，更是我們共同創造、彼此成就的成長軌跡。』
-                    </div>
-                </div>
+
             </section>
 
             <section id="chem" class="chemistry-section card">
@@ -1612,6 +1808,13 @@
                     </div>
                 </div>
 
+                <div class="drama-panel drama-conflict-panel">
+                    <div class="drama-conflict-inner">
+                        <h3>經驗分享</h3>
+                        <p>進行萃取實驗時，團隊初期因操作細節失誤，如比色槽定向錯誤及濾紙破損，導致實驗進度受阻。為優化流程，我介入領導並重新建構分工體系，實施「專項負責制」。透過將複雜程序拆解為單一動作，隊友的操作穩定度大幅提升，進而帶動整體實驗效率。這使我們能在規定時間內完成多次試驗重複，利用數據歸納降低實驗誤差，確保了最終成果的精確度與科學價值。這段歷程讓我體會到，優秀的領導力是精密科學實驗成功的基石。</p>
+                    </div>
+                </div>
+                
                 <div class="chem-panel chem-gallery-panel">
                     <h3 class="chem-gallery-title">照片展示｜封面、心得、實驗操作</h3>
                     <div class="chem-gallery-grid">
